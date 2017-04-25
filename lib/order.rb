@@ -6,11 +6,9 @@ class Order
 
   def initialize
     @items = []
-    @total = total
   end
 
   def add(item, quantity)
-    # fail "Item not on menu" unless menu.include?(item)
     "#{quantity}x #{item[:name]} added to the order."
     @items << [item[:name], item[:price], quantity]
   end
