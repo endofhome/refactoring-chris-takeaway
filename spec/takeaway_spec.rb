@@ -22,4 +22,21 @@ describe Takeaway do
 
   end
 
+  describe "taking orders" do
+
+    it "can create new orders" do
+      expect(takeaway).to respond_to(:create_order)
+    end
+
+    it "orders are remembered" do
+      takeaway.create_order
+      expect(takeaway.orders[0]).to be_an_instance_of(Order)
+    end
+
+    it "an order is returned when creating one" do
+      expect(takeaway.create_order).to be_an_instance_of(Order)
+    end
+
+  end
+
 end
