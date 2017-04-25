@@ -11,11 +11,13 @@ describe Takeaway do
     end
 
     it "checks that the menu contains a tasty choice" do
-      expect(takeaway.menu).to include "Chicken Balti"
+      dish_names = takeaway.menu.map { |dish| dish[:name] }
+      expect(dish_names).to include "Chicken Balti"
     end
 
     it "finds a value of a menu item" do
-      expect(takeaway.menu["Saag Aloo"]).to eq 3
+      sag_aloo = takeaway.menu.detect { |dish| dish[:name] == "Saag Aloo" }
+      expect(sag_aloo[:price]).to eq 3
     end
 
   end

@@ -1,7 +1,7 @@
 require "./lib/takeaway.rb"
 require "./lib/confirmation.rb"
 
-class Order < Takeaway
+class Order
   attr_reader :items
 
   def initialize
@@ -10,10 +10,9 @@ class Order < Takeaway
   end
 
   def add(item, quantity)
-    fail "Item not on menu" unless menu.include?(item)
-    "#{quantity}x #{item} added to the order."
-    cost = menu[item]
-    @items << [item, cost, quantity]
+    # fail "Item not on menu" unless menu.include?(item)
+    "#{quantity}x #{item[:name]} added to the order."
+    @items << [item[:name], item[:price], quantity]
   end
 
   def check
