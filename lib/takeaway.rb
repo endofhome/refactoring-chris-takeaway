@@ -27,4 +27,9 @@ class Takeaway
     order
   end
 
+  def add_dish(order, dish, quantity)
+    fail "Item not on menu" unless menu.include?(dish)
+    order.add(dish, quantity)
+  end
+
 end

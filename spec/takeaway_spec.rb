@@ -37,6 +37,23 @@ describe Takeaway do
       expect(takeaway.create_order).to be_an_instance_of(Order)
     end
 
+    it "items can be added to the order" do
+      order = takeaway.create_order
+      dish = { :name => "Plain Naan", :price => 1.50 }
+      takeaway.add_dish(order, dish, 3)
+
+      first_item_in_order = order.items[0]
+      expect(first_item_in_order[0]).to eq dish[:name]
+      expect(first_item_in_order[1]).to eq dish[:price]
+      expect(first_item_in_order[2]).to eq 3
+    end
+
+    it "fails item not on menu" do
+      order = takeaway.create_order
+      unknown_dish = { :name => "Pad Thai", :price => 1 }
+      expect { takeaway.add_dish(order, unknown_dish, 13) }.to raise_error "Item not on menu"
+    end
+
   end
 
 end

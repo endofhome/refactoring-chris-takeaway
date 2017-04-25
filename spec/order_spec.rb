@@ -21,11 +21,6 @@ describe Order do
       expect(order).to respond_to(:add).with(2).argument
     end
 
-    it "fails item not on menu" do
-      pending("validation should occur on the Takeaway, where the menu exists")
-      expect { order.add("Pad Thai", 1) }.to raise_error "Item not on menu"
-    end
-
     it "adds item to order" do
       item = { :name => "my lovely item", :price => 99 }
       order.add(item, 2)
