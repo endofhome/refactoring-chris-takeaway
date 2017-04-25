@@ -15,7 +15,7 @@ class Order
 
   def check
     items.each { |x| "#{x[0]} = £#{x[1]}\n" * x[2] }
-    "Total: £#{total}"
+    "Total: #{print_total}"
   end
 
   def print_total
